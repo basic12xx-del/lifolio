@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifolio</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f7f4;
+  color: #26352d;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+.app {
+  max-width: 650px;
+  margin: auto;
+  padding: 24px 20px 40px;
+}
+
+header {
+  padding: 12px 0 25px;
+}
+
+.brand {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand span {
+  color: #83a58a;
+}
+
+header p {
+  color: #89958b;
+  font-size: 12px;
+}
+
+.welcome {
+  background: #dce9dc;
+  border-radius: 24px;
+  padding: 28px;
+  margin-bottom: 30px;
+}
+
+.welcome p {
+  color: #64816a;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.welcome h1 {
+  font-size: 27px;
+  line-height: 1.5;
+  margin: 15px 0;
+}
+
+.welcome span {
+  color: #718274;
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 19px;
+  margin: 25px 0 15px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.cards button {
+  border: 0;
+  background: white;
+  border-radius: 18px;
+  padding: 20px 15px;
+  text-align: left;
+  color: #26352d;
+  box-shadow: 0 3px 15px #26352d08;
+  cursor: pointer;
+}
+
+.cards b {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 13px;
+}
+
+.cards strong,
+.cards small {
+  display: block;
+}
+
+.cards strong {
+  font-size: 14px;
+}
+
+.cards small {
+  color: #98a198;
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+.page {
+  display: none;
+  margin-top: 30px;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.form {
+  display: grid;
+  gap: 9px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #e4e9e3;
+  background: #fafcf9;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 14px;
+}
+
+.form button {
+  border: 0;
+  background: #78977e;
+  color: white;
+  padding: 13px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  padding: 10px 0;
+  border-bottom: 1px solid #edf0ec;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  color: #a0aaa1;
+  font-size: 11px;
+  margin-top: 40px;
+}
+/* Lifolio Apple-inspired redesign */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f7f4;
+  color: #202820;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #f5f7f4;
+  padding: 0 20px 40px;
+}
+
+header {
+  padding: 25px 4px 20px;
+}
+
+.brand {
+  font-size: 29px;
+  font-weight: 750;
+  letter-spacing: -1.2px;
+}
+
+.brand span {
+  color: #70a783;
+}
+
+header p {
+  color: #89938a;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.welcome {
+  background: linear-gradient(135deg, #e5f1e7, #f2f6ed);
+  border-radius: 25px;
+  padding: 28px 23px;
+  margin: 12px 0 30px;
+}
+
+.welcome p {
+  color: #648b6d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.welcome h1 {
+  font-size: 27px;
+  line-height: 1.45;
+  letter-spacing: -1px;
+}
+
+.welcome span {
+  color: #758278;
+  font-size: 13px;
+}
+
+h2 {
+  font-size: 21px;
+  letter-spacing: -.5px;
+  margin: 25px 0 16px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.cards button {
+  background: white;
+  border: 1px solid #edf0eb;
+  border-radius: 20px;
+  min-height: 125px;
+  padding: 17px;
+  text-align: left;
+  color: #263329;
+  box-shadow: 0 4px 15px rgba(30, 60, 35, .04);
+}
+
+.cards button b {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.cards button strong {
+  display: block;
+  font-size: 14px;
+}
+
+.cards button small {
+  display: block;
+  color: #929b92;
+  margin-top: 6px;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform .15s, opacity .15s;
+}
+
+button:active {
+  transform: scale(.97);
+  opacity: .8;
+}
+
+.page {
+  background: white;
+  border-radius: 22px;
+  padding: 20px;
+  margin-top: 22px;
+  box-shadow: 0 4px 18px rgba(30, 60, 35, .04);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #e5eae3;
+  border-radius: 13px;
+  background: #f8faf7;
+  font-size: 15px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #80ad8a;
+  background: white;
+}
+
+.form button,
+.page > button {
+  background: #527e5d;
+  color: white;
+  border: none;
+  border-radius: 13px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.page ul {
+  padding: 0;
+  list-style: none;
+}
+
+.page li {
+  padding: 15px 0;
+  border-bottom: 1px solid #edf0eb;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.page li button {
+  float: right;
+  background: #fbeeed;
+  color: #bd6860;
+  border: none;
+  border-radius: 9px;
+  padding: 7px 11px;
+}
+
+#total {
+  background: #edf5ed;
+  color: #477452;
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 18px;
+}
+
+#inviteCode {
+  font-size: 23px;
+  font-weight: 750;
+  letter-spacing: 3px;
+  color: #527e5d;
+  text-align: center;
+  padding: 15px;
+}
+
+footer {
+  text-align: center;
+  color: #a2aaa1;
+  font-size: 11px;
+  padding: 35px 0 15px;
+}
+
+@media (max-width: 360px) {
+  .app {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .welcome h1 {
+    font-size: 23px;
+  }
+}
+.dashboard {
+  margin: 25px 0;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dashboard-card {
+  background: white;
+  border: 1px solid #edf0eb;
+  border-radius: 18px;
+  padding: 17px;
+  box-shadow: 0 4px 15px rgba(30,60,35,.04);
+}
+
+.dashboard-card span {
+  display: block;
+  font-size: 12px;
+  color: #788478;
+}
+
+.dashboard-card strong {
+  display: block;
+  font-size: 25px;
+  margin: 12px 0 4px;
+  color: #527e5d;
+}
+
+.dashboard-card small {
+  color: #929b92;
+  font-size: 11px;
+}
+.stock-warning {
+  background: #fff2e9;
+  color: #a85c35;
+  border: 1px solid #f4d8c5;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 15px 0;
+  font-size: 13px;
+}
+
+.stock-warning button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #a85c35;
+  color: white;
+}
+  </style>
+</head>
+<body>
+
+j
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<div id="auth" style="max-width:420px;margin:20px auto;padding:24px;background:white;border-radius:20px;">
+  <h2>Lifolioへようこそ 🌿</h2>
+  <p>メールアドレスでログイン・新規登録</p>
+  <input id="email" type="email" placeholder="メールアドレス">
+  <input id="password" type="password" placeholder="パスワード" style="margin-top:10px;">
+  <button onclick="signUp()" style="margin-top:12px;padding:12px;background:#78977e;color:white;border:0;border-radius:10px;">新規登録</button>
+  <button onclick="signIn()" style="margin-top:12px;padding:12px;background:#78977e;color:white;border:0;border-radius:10px;">ログイン</button>
+  <p id="authMessage"></p>
+  <button id="logoutButton" onclick="signOut()" style="display:none;">ログアウト</button>
+</div>
+
+<div class="app">
+  <header>
+    <div class="brand">Lifolio<span>.</span></div>
+    <p>家族の暮らしを、ひとつに。</p>
+  </header>
+
+    <main id="home">
+    <section class="welcome">
+      <p>MY HOME</p>
+      <h1>毎日の暮らしを<br>もっと心地よく。</h1>
+      <span>家族みんなの生活管理アプリ</span>
+    </section>
+
+    <h2>ホーム</h2>
+    <div class="cards">
+      <button onclick="showPage('shopping')">
+        <b>🛒</b><strong>買い物リスト</strong>
+        <small>買うものを管理</small>
+      </button>
+      <button onclick="showPage('stock')">
+        <b>📦</b><strong>日用品ストック</strong>
+        <small>在庫と補充を管理</small>
+      </button>
+      <button onclick="showPage('expense')">
+        <b>💰</b><strong>家計簿</strong>
+        <small>毎月の支出を記録</small>
+      </button>
+            <button onclick="showPage('invitePage')">
+        <b>🏠</b><strong>家族を招待・参加</strong>
+        <small>家族と暮らしを共有</small>
+      </button>
+    </div>
+    <section class="dashboard">
+      <div id="stockWarning" class="stock-warning" style="display:none;">
+  ⚠️ 補充が必要な日用品があります
+  <button onclick="showPage('stock')">在庫を確認する</button>
+</div>
+      <h2>今日の暮らし</h2>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <span>🛒 買い物リスト</span>
+          <strong id="dashShopping">0</strong>
+          <small>件の買い物</small>
+        </div>
+
+        <div class="dashboard-card">
+          <span>📦 在庫アラート</span>
+          <strong id="dashStock">0</strong>
+          <small>補充が必要</small>
+        </div>
+
+        <div class="dashboard-card">
+          <span>💰 支出合計</span>
+          <strong id="dashExpense">0円</strong>
+          <small>登録済みの支出</small>
+        </div>
+        <div class="dashboard-card">
+  <span>📅 今月の支出</span>
+  <strong id="dashMonthlyExpense">0円</strong>
+  <small>今月の支出合計</small>
+</div>
+      </div>
+    </section>
+    <section id="shopping" class="page">
+      <h2>🛒 買い物リスト</h2>
+      <div class="form">
+        <input id="shopInput" placeholder="買うものを入力">
+        <button onclick="addItem('shop')">追加</button>
+      </div>
+      <ul id="shopList"></ul>
+    </section>
+
+    <section id="stock" class="page">
+      <h2>📦 日用品ストック</h2>
+      <div class="form">
+        <input id="stockName" placeholder="商品名">
+        <input id="stockCount" type="number" placeholder="在庫数">
+        <input id="stockAlert" type="number" placeholder="補充する個数">
+        <input id="stockPlace" placeholder="保管場所">
+        <input id="stockMemo" placeholder="メモ">
+        <button onclick="addItem('stock')">追加</button>
+      </div>
+      <ul id="stockList"></ul>
+    </section>
+
+   <section id="expense" class="page">
+  <h2>💰 家計簿</h2>
+  <div class="form">
+    <input id="expenseName" placeholder="内容">
+
+    <input id="expenseAmount" type="number" placeholder="金額">
+
+    <select id="expenseCategory">
+      <option value="食費">🍚 食費</option>
+      <option value="日用品">🧻 日用品</option>
+      <option value="交通費">🚃 交通費</option>
+      <option value="光熱費">💡 光熱費</option>
+      <option value="娯楽">🎮 娯楽</option>
+      <option value="その他">📦 その他</option>
+    </select>
+
+    <button onclick="addItem('expense')">追加</button>
+  </div>
+
+  <h3 id="total">合計：0円</h3>
+
+<h3>カテゴリー別の支出</h3>
+<ul id="categoryTotals"></ul>
+<canvas id="categoryChart" width="300" height="300"></canvas>
+<ul id="expenseList"></ul>
+</section>
+  </main>
+  <footer>Lifolio · Your family life, together.</footer>
+</div>
+<div class="page" id="invitePage">
+  <h2>🏠 家族を招待</h2>
+<button onclick="showPage('home')">
+  ← ホームに戻る
+</button>
+  <button onclick="createInvite()">
+    招待コードを発行
+  </button>
+
+  <p id="inviteCode"></p>
+
+  <hr>
+
+  <h3>招待コードを入力</h3>
+  <input
+    id="inviteInput"
+    placeholder="8桁のコード"
+    maxlength="8"
+  >
+
+  <button onclick="acceptInvite()">
+    家族グループに参加
+  </button>
+
+  <p id="inviteMessage"></p>
+</div>
+
+
+  <script>
+    
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.style.display = 'none';
+  });
+
+  document.getElementById(page).style.display = 'block';
+  document.getElementById(page).scrollIntoView({
+    behavior: 'smooth'
+  });
+}
+
+let shopping = JSON.parse(localStorage.getItem('lifolio_shop') || '[]');
+let stocks = JSON.parse(localStorage.getItem('lifolio_stock') || '[]');
+let expenses = JSON.parse(localStorage.getItem('lifolio_expense') || '[]');
+
+function save() {
+  localStorage.setItem('lifolio_shop', JSON.stringify(shopping));
+  localStorage.setItem('lifolio_stock', JSON.stringify(stocks));
+  localStorage.setItem('lifolio_expense', JSON.stringify(expenses));
+}
+
+
+async function addItem(type) {
+  if (type === 'shop') {
+    const input = document.getElementById('shopInput');
+    const name = input.value.trim();
+    const householdId = window.lifolioHouseholdId;
+
+    if (!name) return;
+
+    if (!householdId) {
+      window.alert('家族グループの準備がまだ終わっていません。');
+      return;
+    }
+
+    const { data, error } = await supabaseClient
+      .from('shopping_items')
+      .insert({
+        household_id: householdId,
+        name: name,
+        quantity: 1,
+        done: false
+      })
+      .select('id, name')
+      .single();
+
+    if (error) {
+      window.alert('保存エラー: ' + error.message);
+      return;
+    }
+
+    shopping.push({
+      id: data.id,
+      name: data.name
+    });
+
+    input.value = '';
+  }
+
+  if (type === 'stock') {
+    const name = document.getElementById('stockName').value.trim();
+    const count = Number(document.getElementById('stockCount').value);
+    const alertAt = Number(document.getElementById('stockAlert').value);
+    const place = document.getElementById('stockPlace').value.trim();
+    const memo = document.getElementById('stockMemo').value.trim();
+
+    if (!name) return;
+
+    const householdId = window.lifolioHouseholdId;
+
+    if (!householdId) {
+      window.alert('家族グループの準備がまだ終わっていません。');
+      return;
+    }
+
+    const { data, error } = await supabaseClient
+      .from('stock_items')
+      .insert({
+        household_id: householdId,
+        name,
+        quantity: count,
+        alert_at: alertAt,
+        location: place,
+        memo
+      })
+      .select('id, name, quantity, alert_at, location, memo')
+      .single();
+
+    if (error) {
+      window.alert('保存エラー: ' + error.message);
+      return;
+    }
+
+    stocks.push({
+      id: data.id,
+      name: data.name,
+      count: data.quantity,
+      alert: data.alert_at,
+      place: data.location,
+      memo: data.memo
+    });
+
+    ['stockName', 'stockCount', 'stockAlert', 'stockPlace', 'stockMemo']
+      .forEach(id => document.getElementById(id).value = '');
+  }
+
+  if (type === 'expense') {
+  const name = document.getElementById('expenseName').value.trim();
+  const amount = Number(document.getElementById('expenseAmount').value);
+  const category = document.getElementById('expenseCategory').value;
+  const householdId = window.lifolioHouseholdId;
+
+  if (!name || amount <= 0) return;
+
+  if (!householdId) {
+    window.alert('家族グループの準備がまだ終わっていません。');
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('expenses')
+    .insert({
+      household_id: householdId,
+      name,
+      amount,
+      category
+    })
+    .select('id, name, amount, category, spent_at')
+    .single();
+
+  if (error) {
+    window.alert('保存エラー: ' + error.message);
+    return;
+  }
+
+  expenses.push({
+    id: data.id,
+    name: data.name,
+    amount: data.amount,
+    category: data.category,
+    spent_at: data.spent_at
+  });
+
+  document.getElementById('expenseName').value = '';
+  document.getElementById('expenseAmount').value = '';
+}
+  
+
+  save();
+  render();
+}
+
+async function removeItem(type, index) {
+  if (type === 'shop') {
+    const item = shopping[index];
+
+    if (item.id) {
+      const { error } = await supabaseClient
+        .from('shopping_items')
+        .delete()
+        .eq('id', item.id)
+        .eq('household_id', window.lifolioHouseholdId);
+
+      if (error) {
+        window.alert('削除エラー: ' + error.message);
+        return;
+      }
+    }
+
+    shopping.splice(index, 1);
+  }
+
+  if (type === 'stock') {
+    const item = stocks[index];
+
+    if (item.id) {
+      const { error } = await supabaseClient
+        .from('stock_items')
+        .delete()
+        .eq('id', item.id)
+        .eq('household_id', window.lifolioHouseholdId);
+
+      if (error) {
+        window.alert('削除エラー: ' + error.message);
+        return;
+      }
+    }
+
+    stocks.splice(index, 1);
+  }
+
+  if (type === 'expense') {
+  const item = expenses[index];
+
+  if (!item.id) {
+    window.alert('データIDが見つかりません。');
+    return;
+  }
+
+  const { data, error } = await supabaseClient
+    .from('expenses')
+    .delete()
+    .eq('id', item.id)
+    .eq('household_id', window.lifolioHouseholdId)
+    .select('id')
+    .maybeSingle();
+
+  if (error) {
+    window.alert('削除エラー: ' + error.message);
+    return;
+  }
+
+  if (!data) {
+    window.alert('データが削除されませんでした。権限またはIDを確認します。');
+    return;
+  }
+
+  expenses.splice(index, 1);
+}
+      
+
+
+
+  save();
+  render();
+}
+
+function render() {
+  document.getElementById('shopList').innerHTML =
+  shopping
+    .map((item, i) => ({ item, i }))
+    .sort((a, b) => Number(!!a.item.done) - Number(!!b.item.done))
+    .map(({ item, i }) => {
+      const name = typeof item === 'string' ? item : item.name;
+      const done = typeof item === 'object' && item.done;
+
+      return `<li>
+        <label>
+          <input type="checkbox"
+            ${done ? 'checked' : ''}
+            onchange="toggleShoppingItem(${i})">
+          <span style="${done ? 'text-decoration:line-through;color:#999;' : ''}">
+            ${escapeHTML(name)}
+          </span>
+        </label>
+        <button onclick="removeItem('shop',${i})">削除</button>
+      </li>`;
+    }).join('');
+
+  document.getElementById('stockList').innerHTML =
+    stocks.map((item, i) =>
+      `<li><strong>${escapeHTML(item.name)}</strong>：${item.count}個
+      ${item.count <= item.alert ? ' ⚠️ 補充が必要' : ''}
+      <br><small>保管場所：${escapeHTML(item.place || '未設定')} / ${escapeHTML(item.memo || '')}</small>
+      <button onclick="removeItem('stock',${i})">削除</button></li>`
+    ).join('');
+
+  document.getElementById('expenseList').innerHTML =
+  expenses.map((item, i) =>
+    `<li>
+      ${escapeHTML(item.name)}
+      <span>（${escapeHTML(item.category || 'その他')}）</span>
+      ：${Number(item.amount).toLocaleString()}円
+      <button onclick="removeItem('expense',${i})">削除</button>
+    </li>`
+  ).join('');
+
+  const total = expenses.reduce((sum, item) => sum + item.amount, 0);
+  document.getElementById('total').textContent =
+    '合計：' + total.toLocaleString() + '円';
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;',
+    '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+
+render();
+
+const SUPABASE_URL = 'https://yqyarkaxekxzmjgdkgsr.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_5f3ejCOKl-AHSApaL-3tlA_b4kvg67y';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+console.log('Lifolio: Supabase読み込み成功');
+
+async function signUp() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabaseClient.auth.signUp({
+    email,
+    password
+  });
+
+  document.getElementById('authMessage').textContent =
+    error ? error.message : '確認メールを送信したよ。メールを確認してね！';
+}
+
+async function signIn() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  document.getElementById('authMessage').textContent =
+    error ? error.message : 'ログインできたよ！';
+
+  if (!error) updateAuthUI(data.user);
+}
+
+async function signOut() {
+  await supabaseClient.auth.signOut();
+  updateAuthUI(null);
+}
+
+function updateAuthUI(user) {
+  document.getElementById('auth').style.display = user ? 'none' : 'block';
+  document.querySelector('.app').style.display = user ? 'block' : 'none';
+  document.getElementById('logoutButton').style.display = user ? 'block' : 'none';
+}
+
+supabaseClient.auth.getSession().then(({ data }) => {
+  updateAuthUI(data.session?.user || null);
+});
+
+
+document.getElementById('authMessage').textContent =
+  window.supabase
+    ? 'Supabase読み込みOK！'
+    : 'Supabase読み込み失敗';
+
+
+let lifolioHouseholdPromise = null;
+
+async function setupLifolioHousehold(user) {
+  if (lifolioHouseholdPromise) return lifolioHouseholdPromise;
+
+  lifolioHouseholdPromise = (async () => {
+    // すでに所属している家族グループを探す
+    const { data: members, error: searchError } =
+      await supabaseClient
+        .from('household_members')
+        .select('household_id, role')
+        .eq('user_id', user.id)
+        .limit(1);
+
+    if (searchError) throw searchError;
+
+    if (members && members.length > 0) {
+      window.lifolioHouseholdId = members[0].household_id;
+      console.log('家族グループに接続しました');
+await loadStockItems();
+await loadShoppingItems();
+await loadExpenseItems();
+return;
+    }
+
+    // まだなければ家族グループを作る
+    const { data: home, error: homeError } =
+      await supabaseClient
+        .from('households')
+        .insert({
+          name: 'わが家',
+          created_by: user.id
+        })
+        .select('id')
+        .single();
+
+    if (homeError) throw homeError;
+
+    // ログイン中の人をメンバーに登録
+    const { error: memberError } =
+      await supabaseClient
+        .from('household_members')
+        .insert({
+          household_id: home.id,
+          user_id: user.id,
+          role: 'owner'
+        });
+
+    if (memberError) throw memberError;
+
+    window.lifolioHouseholdId = home.id;
+    console.log('家族グループを作成しました');
+    await loadStockItems();
+    await loadShoppingItems();
+    await loadExpenseItems();
+  })();
+
+  try {
+    await lifolioHouseholdPromise;
+  } catch (error) {
+    lifolioHouseholdPromise = null;
+    console.error('家族グループ設定エラー:', error);
+    alert('家族グループの設定でエラーが発生しました: ' + error.message);
+  }
+}
+
+// ログイン状態を確認して家族グループを準備
+supabaseClient.auth.getSession().then(({ data }) => {
+  if (data.session?.user) {
+    setupLifolioHousehold(data.session.user);
+  }
+});
+
+// ログインしたときにも準備
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (session?.user) {
+    setTimeout(() => setupLifolioHousehold(session.user), 0);
+  } else {
+    window.lifolioHouseholdId = null;
+    lifolioHouseholdPromise = null;
+  }
+});
+
+async function loadStocksFromCloud() {
+  const householdId = window.lifolioHouseholdId;
+  if (!householdId) return;
+
+  const { data, error } = await supabaseClient
+    .from('stock_items')
+    .select('id, name, quantity, alert_at, location, memo')
+    .eq('household_id', householdId);
+
+  if (error) {
+    console.error('日用品の読み込みエラー:', error);
+    return;
+  }
+
+  stocks = data.map(item => ({
+    id: item.id,
+    name: item.name,
+    count: item.quantity,
+    alert: item.alert_at,
+    place: item.location,
+    memo: item.memo
+  }));
+
+  render();
+}
+
+// ログイン後、家族グループの準備ができたら読み込む
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  if (session?.user) {
+    setTimeout(async () => {
+      await setupLifolioHousehold(session.user);
+      await loadStocksFromCloud();
+    }, 0);
+  }
+});
+
+// ページを開いたときにも読み込む
+supabaseClient.auth.getSession().then(async ({ data }) => {
+  if (data.session?.user) {
+    await setupLifolioHousehold(data.session.user);
+    await loadStocksFromCloud();
+  }
+});
+async function loadStockItems() {
+  const householdId = window.lifolioHouseholdId;
+
+  if (!householdId) return;
+
+  const { data, error } = await supabaseClient
+    .from('stock_items')
+    .select('id, name, quantity, alert_at, location, memo')
+    .eq('household_id', householdId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('在庫読み込みエラー:', error.message);
+    return;
+  }
+
+  stocks = data.map(item => ({
+    id: item.id,
+    name: item.name,
+    count: item.quantity,
+    alert: item.alert_at,
+    place: item.location,
+    memo: item.memo
+  }));
+
+  save();
+  render();
+}
+async function loadShoppingItems() {
+  const householdId = window.lifolioHouseholdId;
+
+  if (!householdId) return;
+
+  const { data, error } = await supabaseClient
+    .from('shopping_items')
+    .select('id, name, done')
+    .eq('household_id', householdId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('買い物リスト読み込みエラー:', error.message);
+    return;
+  }
+
+ shopping = data.map(item => ({
+  id: item.id,
+  name: item.name,
+  done: item.done || false
+}));
+
+  save();
+  render();
+}
+
+async function loadExpenseItems() {
+  const householdId = window.lifolioHouseholdId;
+
+  if (!householdId) return;
+
+  const { data, error } = await supabaseClient
+    .from('expenses')
+    .select('id, name, amount, category, spent_at')
+    .eq('household_id', householdId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('家計簿読み込みエラー:', error.message);
+    return;
+  }
+
+  expenses = data.map(item => ({
+  id: item.id,
+  name: item.name,
+  amount: item.amount,
+  category: item.category,
+  spent_at: item.spent_at
+}));
+
+  save();
+  render();
+}
+async function createInvite() {
+  const message = document.getElementById('inviteMessage');
+  const codeArea = document.getElementById('inviteCode');
+
+  message.textContent = '発行中...';
+  codeArea.textContent = '';
+
+  const { data, error } = await supabaseClient.rpc(
+    'create_household_invite'
+  );
+
+  if (error) {
+    message.textContent = 'エラー：' + error.message;
+    return;
+  }
+
+  codeArea.textContent = '招待コード：' + data;
+  message.textContent = 'このコードを家族に共有してね（有効期限7日）';
+
+  window.lifolioInviteCode = data;
+}
+
+async function acceptInvite() {
+  const code = document.getElementById('inviteInput').value.trim();
+  const message = document.getElementById('inviteMessage');
+
+  if (!code) {
+    message.textContent = '招待コードを入力してね';
+    return;
+  }
+
+  message.textContent = '参加処理中...';
+
+  const { data, error } = await supabaseClient.rpc(
+    'accept_household_invite',
+    { invite_code: code }
+  );
+
+  if (error) {
+    message.textContent = 'エラー：' + error.message;
+    return;
+  }
+
+  message.textContent = '家族グループに参加できたよ！';
+
+  window.lifolioHouseholdId = null;
+  lifolioHouseholdPromise = null;
+
+  const { data: sessionData } = await supabaseClient.auth.getSession();
+
+  if (sessionData.session?.user) {
+    await setupLifolioHousehold(sessionData.session.user);
+  }
+}
+console.log('Lifolio JS 最後まで読み込みOK');
+function updateDashboard() {
+  document.getElementById('dashShopping').textContent =
+    shopping.length;
+
+  document.getElementById('dashStock').textContent =
+    stocks.filter(item => item.count <= item.alert).length;
+
+  const total = expenses.reduce(
+    (sum, item) => sum + Number(item.amount || 0), 0
+  );
+
+  document.getElementById('dashExpense').textContent =
+    total.toLocaleString() + '円';
+}
+
+const lifolioOriginalRender = render;
+
+render = function() {
+  lifolioOriginalRender();
+  updateDashboard();
+};
+async function toggleShoppingItem(index) {
+  const item = shopping[index];
+  if (!item || !item.id) return;
+
+  const nextDone = !item.done;
+
+  const { error } = await supabaseClient
+    .from('shopping_items')
+    .update({ done: nextDone })
+    .eq('id', item.id)
+    .eq('household_id', window.lifolioHouseholdId);
+
+  if (error) {
+    alert('更新エラー：' + error.message);
+    return;
+  }
+
+  item.done = nextDone;
+  render();
+}
+function updateStockWarning() {
+  const warning = document.getElementById('stockWarning');
+
+  const needsRestock = stocks.some(item =>
+    Number(item.count) <= Number(item.alert)
+  );
+
+  warning.style.display = needsRestock ? 'block' : 'none';
+}
+
+const oldRender = render;
+
+render = function() {
+  oldRender();
+  updateStockWarning();
+};
+
+updateStockWarning();
+function updateMonthlyExpense() {
+  const now = new Date();
+
+  const total = expenses
+    .filter(item => {
+      if (!item.spent_at) return false;
+      const date = new Date(item.spent_at);
+      return date.getFullYear() === now.getFullYear()
+        && date.getMonth() === now.getMonth();
+    })
+    .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+
+  document.getElementById('dashMonthlyExpense').textContent =
+    total.toLocaleString() + '円';
+}
+
+const previousRender = render;
+
+render = function() {
+  previousRender();
+
+  const monthlyElement = document.getElementById('dashMonthlyExpense');
+  if (monthlyElement) {
+    updateMonthlyExpense();
+  }
+};
+
+if (document.getElementById('dashMonthlyExpense')) {
+  updateMonthlyExpense();
+}
+
+updateMonthlyExpense();
+function updateCategoryTotals() {
+  const totals = {};
+
+  expenses.forEach(item => {
+    const category = item.category || 'その他';
+    totals[category] = (totals[category] || 0) + Number(item.amount || 0);
+  });
+
+  const element = document.getElementById('categoryTotals');
+  if (element) {
+    element.innerHTML = Object.entries(totals)
+      .map(([category, amount]) =>
+        `<li>${escapeHTML(category)}：${amount.toLocaleString()}円</li>`
+      ).join('');
+  }
+
+  const canvas = document.getElementById('categoryChart');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const entries = Object.entries(totals);
+  const total = entries.reduce((sum, item) => sum + item[1], 0);
+
+  if (total === 0) return;
+
+  const colors = ['#78977e', '#e8b978', '#83a9bd', '#c58d9b', '#a99ac7', '#b8b8a0'];
+
+  let angle = -Math.PI / 2;
+
+  entries.forEach(([category, amount], i) => {
+    const nextAngle = angle + (amount / total) * Math.PI * 2;
+
+    ctx.beginPath();
+    ctx.moveTo(150, 150);
+    ctx.arc(150, 150, 120, angle, nextAngle);
+    ctx.closePath();
+    ctx.fillStyle = colors[i % colors.length];
+    ctx.fill();
+
+    angle = nextAngle;
+  });
+}
+const categoryOriginalRender = render;
+
+render = function() {
+  categoryOriginalRender();
+  updateCategoryTotals();
+};
+
+updateCategoryTotals();
+
+  </script>
+</body>
+</html>
